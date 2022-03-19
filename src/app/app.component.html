@@ -1,0 +1,107 @@
+<mat-toolbar color="primary" class="header" *ngIf="!this.authService.isLoggedIn()">
+  <div class="logodiv"> <img src="../assets/logo.jpg"> CODWAY</div>
+</mat-toolbar>
+
+<mat-toolbar color="primary" class="header" *ngIf="this.authService.isLoggedIn()">
+  <div class="logodiv"> <img src="../assets/logo.jpg"> CODWAY</div>
+  <span class="nav-tool-items">
+    <mat-icon (click)="logout()">logout</mat-icon> 
+    <mat-icon (click)="sidenav.toggle()" class="hamburger">menu</mat-icon>
+  </span>
+  
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <!-- Sidenav -->
+  <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [fixedInViewport]="true"
+    [fixedTopGap]>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/GestionAchat/acceuil">
+        <mat-icon>home</mat-icon> Home
+      </a>
+      
+    
+
+      <mat-expansion-panel class="navliste">
+        <mat-expansion-panel-header class="navliste">
+        <mat-panel-title>
+          <mat-icon>data_usage </mat-icon>
+         Donnée de base          
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-nav-list (click)="NaviguerVersGestionUser()">
+        <mat-list-item ><mat-icon>supervised_user_circle</mat-icon>Gestion des utilisateurs</mat-list-item>
+      </mat-nav-list>
+      <mat-nav-list (click)="NaviguerVersGestionFamille_article()">
+        <mat-list-item ><mat-icon>perm_media</mat-icon>Gestion des familles d'article</mat-list-item>
+      </mat-nav-list>
+      <mat-nav-list (click)="NaviguerVersGestionArticle()">
+        <mat-list-item ><mat-icon>image</mat-icon>Gestion des d'article</mat-list-item>
+      </mat-nav-list>
+      <mat-nav-list (click)="NaviguerVersGestionFournisseur()">
+        <mat-list-item ><mat-icon>people_outline</mat-icon>Gestion des fournisseurs</mat-list-item>
+      </mat-nav-list>
+      <mat-nav-list (click)="NaviguerVersGestionTaxe()">
+        <mat-list-item ><mat-icon>money</mat-icon>Gestion taxe</mat-list-item>
+      </mat-nav-list>
+      <mat-nav-list (click)="NaviguerVersGestionElement_facturation()">
+        <mat-list-item ><mat-icon>file_copy</mat-icon>Gestion élément facturation</mat-list-item>
+      </mat-nav-list>
+      <mat-nav-list (click)="NaviguerVersGestionTarif()">
+        <mat-list-item ><mat-icon>money</mat-icon>Gestion tarif</mat-list-item>
+      </mat-nav-list>
+    </mat-expansion-panel>
+
+
+
+
+
+
+
+
+
+      
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Main content -->
+  <mat-sidenav-content>
+    <section class="mat-typography title-group">
+      <router-outlet></router-outlet>
+    <!-- <mat-divider></mat-divider>-->  
+    </section>
+    
+    <!--<mat-card class="my-alternate-theme">
+      My Alternate Themes: &nbsp; &nbsp; &nbsp;
+      <button mat-raised-button color="primary">
+
+
+
+
+
+        
+        Primary
+      </button>
+      <button mat-raised-button color="accent">
+        Accent
+      </button>
+      <button mat-raised-button color="warn">
+        Warning
+      </button>
+    </mat-card> -->
+
+    <!-- <div class="productCards">
+      <mat-grid-list cols="4" rowHeight="200px">
+        <mat-grid-tile [colspan]="3" [rowspan]="1">1
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="2">2
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">3
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">4
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div> -->
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
